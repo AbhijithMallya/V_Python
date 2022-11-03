@@ -9,5 +9,3 @@ print("2 --> Paper")
 print("3 --> Scissor")
 
 choice = int(input("Enter Choice :: "))
-
-
