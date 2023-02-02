@@ -41,6 +41,7 @@
 from queue import PriorityQueue
 v = 6
 graph = [[] for i in range(v)]
+
 def best_first_search(actual_Src, target, n):
     visited = [False] * n
     pq = PriorityQueue()
@@ -65,7 +66,7 @@ addedge(0, 2, 8)
 addedge(0, 3, 6)
 addedge(1, 4, 4)
 addedge(1, 5, 10)
-
 source = 0
 target = 5
 best_first_search(source, target, v)
+#OUTPUT-->0 1 4 3 2 5
