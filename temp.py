@@ -1,28 +1,20 @@
-from queue import PriorityQueue
-v=6
-graph=[ [] for i in range(v)]
-
-def bfs(src , target,n):
-    visited=[False]*n
-    pq=PriorityQueue()
-    pq.put((0,src))
-    visited[src]=True
-    while pq.empty() ==False:
-        u=pq.get()[1]
-        print(u,end=' ')
-        for  v,c in graph[u]:
-            if visited[v]==False:
-                visited[v]=True
-                pq.put((c,v))
-            
-def add_edge(x,y,cost):
-    graph[x].append((y,cost))
-    graph[y].append((x,cost))
-
-add_edge(0,1,2)
-add_edge(0,2,8)
-add_edge(0,3,6)
-add_edge(1,4,4)
-add_edge(1,5,10)
-bfs(0,5,6)
-    
+from collections import defaultdict
+jug1,jug2,aim=5,3,4
+visited = defaultdict(lambda:False)
+def waterjug(amt1,amt2):
+    if (amt1==aim and amt2==0)or (amt2==aim and amt1==0):
+        print(amt1,amt2)
+        return True
+    if visited[(amt1,amt2)]==False:
+        print(amt1,amt2)
+        visited[(amt1,amt2)]=True
+        return (waterjug(amt1,0)or
+                waterjug(0,amt2)or
+                waterjug(jug1,amt2)or
+                waterjug(amt1,jug2)or
+                waterjug(amt1 + min(amt2 , jug1-amt1) , amt2 - min(amt2 , jug1-amt1))or
+                waterjug(amt1 - min(amt1 , jug2-amt2) , amt2 + min(amt1 , jug2-amt2)))
+    else : 
+        return False
+print('Steps')
+waterjug(0,0)
