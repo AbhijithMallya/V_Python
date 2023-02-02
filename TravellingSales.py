@@ -1,4 +1,3 @@
-from sys import maxsize 
 from itertools import permutations 
 V = 4 
 def travellingSalesmanProblem(graph, s): 
@@ -6,7 +5,7 @@ def travellingSalesmanProblem(graph, s):
     for i in range(V): 
         if i != s: 
             vertex.append(i) 
-    min_path = maxsize 
+    min_path = 99
     next_permutation=permutations(vertex) 
     for i in next_permutation: 
         current_pathweight = 0 
